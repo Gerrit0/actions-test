@@ -12,4 +12,6 @@ jobs:
                   node-version: 14
             - run: yarn install --ci
             - run: yarn typedoc src/index.ts
+            - run: git config --global user.email gerrit@gerritbirkeland.com
+            - run: git config --global user.name "Gerrit Birkeland"
             - run: yarn gh-pages -d docs
