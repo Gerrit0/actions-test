@@ -12,6 +12,11 @@ jobs:
                   node-version: 14
             - run: yarn install --ci
             - run: yarn typedoc src/index.ts
-            - run: git config --global user.email gerrit@gerritbirkeland.com
-            - run: git config --global user.name "Gerrit Birkeland"
-            - run: yarn gh-pages -d docs
+            - run: git config --global user.email typedoc@gerritbirkeland.com
+            - run: git config --global user.name "TypeDoc Bot"
+            - uses: JamesIves/github-pages-deploy-action@3.7.1
+              with:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  BRANCH: gh-pages
+                  FOLDER: docs
+                  CLEAN: true
